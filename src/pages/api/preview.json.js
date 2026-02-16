@@ -12,7 +12,7 @@ cache.set('https://www.nts.live/shows/the-breakfast-show-flo/episodes/the-breakf
 
 cache.set('https://www.nts.live/shows/the-breakfast-show-flo/episodes/the-breakfast-show-flo-30th-september-2024', {
   url: 'https://www.nts.live/shows/the-breakfast-show-flo/episodes/the-breakfast-show-flo-30th-september-2024',
-  title: 'THE NTS BREAKFAST SHOW W/ FLO — 30.09',
+  title: 'the nts breakfast show w/ flo — 30.09',
   description: '',
   image: '',
   fetched_at: new Date().toISOString()
@@ -20,7 +20,7 @@ cache.set('https://www.nts.live/shows/the-breakfast-show-flo/episodes/the-breakf
 
 cache.set('https://www.nts.live/shows/andras/episodes/andras-10th-september-2025', {
   url: 'https://www.nts.live/shows/andras/episodes/andras-10th-september-2025',
-  title: 'ANDRAS NTS — 10.09.25',
+  title: 'andras nts — 10.09.25',
   description: '',
   image: '',
   fetched_at: new Date().toISOString()
