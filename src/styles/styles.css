@@ -46,12 +46,12 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
 /* Link styles for main content: blue, underlined, with decorative hook arrow */
 .content a, .content a:link, .content a:visited {
-  color: var(--color-muted);
+  color: #6b6b6b;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  /* Use Myanmar3 as requested; fall back to system sans */
-  font-family: 'Myanmar3', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Use Inter for consistency across all platforms including iOS */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500;
   font-size: 1.05rem;
   letter-spacing: 0.01em;
@@ -132,8 +132,8 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
 .blog-container{max-width:900px;margin:0 auto}
 .music-list ul,.shows-list ul{padding-left:0;list-style:none}
-.music-list li{padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.03)}
-.shows-list li{padding:0.25rem 0;border-bottom:1px solid rgba(255,255,255,0.03);line-height:1.25}
+.music-list li{padding:0.25rem 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.shows-list li{padding:0.15rem 0;border-bottom:1px solid rgba(255,255,255,0.03);line-height:1.18}
 .music-list h3{margin-top:1.25rem}
 .links-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;padding:0}
 
