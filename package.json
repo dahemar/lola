@@ -1,0 +1,22 @@
+{
+  "name": "lola",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "svgo": "svgo -f src/assets/svg -o src/assets/svg"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@fontsource/inter": "^4.5.0",
+    "astro": "^5.17.1",
+    "lucide": "^0.257.0",
+    "svgo": "^3.0.0"
+  }
+}

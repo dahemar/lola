@@ -1,0 +1,53 @@
+// Hardcoded broadcasts for pre-warm
+const broadcasts = [
+  {
+    label: 'THE NTS BREAKFAST SHOW W/ FLO — 29.04',
+    url: 'https://www.nts.live/shows/the-breakfast-show-flo/episodes/the-breakfast-show-flo-29th-april-2024'
+  },
+  {
+    label: 'THE NTS BREAKFAST SHOW W/ FLO — 30.09',
+    url: 'https://www.nts.live/shows/the-breakfast-show-flo/episodes/the-breakfast-show-flo-30th-september-2024'
+  },
+  {
+    label: 'ANDRAS NTS — 10.09.25',
+    url: 'https://www.nts.live/shows/andras/episodes/andras-10th-september-2025'
+  }
+];
+
+// Simple in-memory cache
+const cache = new Map();
+
+function getCacheEntry(key){
+  return cache.get(key) ?? null;
+}
+
+function setCacheEntry(key, value){
+  cache.set(key, value);
+}
+
+// Pre-warm cache from known broadcasts
+for(const b of broadcasts){
+  if(!getCacheEntry(b.url)){
+    setCacheEntry(b.url, { url: b.url, title: b.label, description: '', image: '', fetched_at: new Date().toISOString() });
+  }
+}
+
+export async function GET({ url }){
+  console.log('preview GET called with url:', url.searchParams.get('url'));
+  try{
+    const target = url.searchParams.get('url');
+    if(!target) return new Response(JSON.stringify({ error: 'missing url' }), { status: 400 });
+
+    // If cached, return it
+    const cached = getCacheEntry(target);
+    if(cached){
+      return new Response(JSON.stringify(cached), { headers: { 'Content-Type': 'application/json', 'X-Cache': 'HIT' } });
+    }
+
+    // Otherwise, return error (no fetch for now)
+    return new Response(JSON.stringify({ error: 'not_cached' }), { status: 404 });
+  }catch(err){
+    console.error('preview error:', err);
+    return new Response(JSON.stringify({ error: 'internal_error' }), { status: 500 });
+  }
+}

@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import broadcasts from '../lib/broadcasts.js'
+---
+
+<Base>
+  <Nav slot="nav" />
+
+  <article class="content">
+    
+    <section class="music-list">
+      
+      <div id="broadcasts">
+        <h3 class="section-title">broadcasts</h3>
+        <ul>
+          {broadcasts.map((b) => (
+            <li>
+              <a href={b.url} target="_blank" rel="noopener">{b.label || b.url}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div id="playlists">
+        <h3 class="section-title">playlists</h3>
+        <ul>
+          <li><a href="https://open.spotify.com/playlist/3gyUmQhxmlYHe9UTySm4vU" target="_blank" rel="noopener">the numero group playlist</a></li>
+          <li><a href="https://open.spotify.com/playlist/6hwSVA1YrZo2updK18Oh3I" target="_blank" rel="noopener">public possession, ppool</a></li>
+        </ul>
+      </div>
+
+      <div id="press">
+        <h3 class="section-title">press</h3>
+        <ul>
+          <li><a href="https://www.destroyexist.com/2025/12/lola-moon-song-live.html" target="_blank" rel="noopener">destroy/exist: moon song (live)</a></li>
+          <li><a href="https://www.americanpancake.com/2025/12/lola-and-beautifully-raw-textured.html" target="_blank" rel="noopener">american pancake</a></li>
+          <li><a href="https://www.analoguetrash.com/blog/lola-moon-song-live" target="_blank" rel="noopener">analogue trash</a></li>
+        </ul>
+      </div>
+
+      <div id="releases">
+        <h3 class="section-title">releases</h3>
+        <ul>
+            <div class="releases-grid">
+              <div class="release-thumb" data-title="Moon Song (LIVE)">
+                <img src="/assets/releases/release1.jpg" alt="Moon Song (LIVE) cover" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27><rect width=%27100%25%27 height=%27100%25%27 fill=%27%23efefef%27/><text x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 text-anchor=%27middle%27 fill=%27%23666%27 dy=%27.3em%27>cover</text></svg>'" />
+                <span class="thumb-label">Moon Song (LIVE)</span>
+              </div>
+              <div class="release-thumb" data-title="Anna Letter">
+                <img src="/assets/releases/release2.jpg" alt="Anna Letter cover" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27><rect width=%27100%25%27 height=%27100%25%27 fill=%27%23efefef%27/><text x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 text-anchor=%27middle%27 fill=%27%23666%27 dy=%27.3em%27>cover</text></svg>'" />
+                <span class="thumb-label">Anna Letter</span>
+              </div>
+              <div class="release-thumb" data-title="I hope the Sky is grey when I wake up">
+                <img src="/assets/releases/release3.jpg" alt="I hope the Sky is grey when I wake up cover" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27><rect width=%27100%25%27 height=%27100%25%27 fill=%27%23efefef%27/><text x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 text-anchor=%27middle%27 fill=%27%23666%27 dy=%27.3em%27>cover</text></svg>'" />
+                <span class="thumb-label">I hope the Sky is grey when I wake up</span>
+              </div>
+              <div class="release-thumb" data-title="Prayer Song (LIVE)">
+                <img src="/assets/releases/release4.jpg" alt="Prayer Song (LIVE) cover" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 300%27><rect width=%27100%25%27 height=%27100%25%27 fill=%27%23efefef%27/><text x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 text-anchor=%27middle%27 fill=%27%23666%27 dy=%27.3em%27>cover</text></svg>'" />
+                <span class="thumb-label">Prayer Song (LIVE)</span>
+              </div>
+            </div>
+        </ul>
+      </div>
+
+      <div id="links">
+        <h3 class="section-title">streaming</h3>
+        <ul class="links-grid">
+          <li><a href="https://open.spotify.com/artist/3aKy2W3GntU09Uk44ECBNE" target="_blank" rel="noopener">spotify</a></li>
+          <li><a href="https://lola22.bandcamp.com" target="_blank" rel="noopener">bandcamp</a></li>
+          <li><a href="https://www.youtube.com/channel/UCSi_nu9PIJs9L__gi_2fEXw" target="_blank" rel="noopener">youtube</a></li>
+          <li><a href="https://www.ninaprotocol.com/hubs/lola" target="_blank" rel="noopener">nina</a></li>
+          <li><a href="https://music.apple.com/de/artist/lola/1702317471?l=en-GB" target="_blank" rel="noopener">apple music</a></li>
+          <li><a href="https://tidal.com/artist/49711600/u" target="_blank" rel="noopener">tidal</a></li>
+        </ul>
+      </div>
+
+      <div id="videos">
+        <h3 class="section-title">music videos</h3>
+        <div class="videos">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/Dwlp4D_zc3Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/Lp8S0nWeHjw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/1088717019" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </article>
+
+</Base>

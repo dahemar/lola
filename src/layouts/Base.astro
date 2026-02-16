@@ -1,0 +1,61 @@
+---
+import "../styles/styles.css"
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOLA</title>
+    <!-- Load Inter from Google Fonts as a fallback if @fontsource isn't installed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="layout--sidebar-right">
+    <slot name="nav" />
+    <main class="content">
+      <slot />
+    </main>
+    <script>
+      (function(){
+        if (typeof document === 'undefined') return;
+        function isExternalLink(a){
+          const href = a.getAttribute('href');
+          if(!href) return false;
+          if(href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return false;
+          try{
+            const url = new URL(href, location.href);
+            return url.origin !== location.origin;
+          }catch(e){
+            return false;
+          }
+        }
+        function updateLinks(){
+          document.querySelectorAll('a').forEach(function(a){
+            try{
+              // Respect explicit target attributes set by author
+              if(a.hasAttribute('target')) return;
+              if(isExternalLink(a)){
+                a.setAttribute('target','_blank');
+                var rel = a.getAttribute('rel') || '';
+                if(!/\bnoopener\b/.test(rel)) rel = (rel + ' noopener').trim();
+                if(!/\bnoreferrer\b/.test(rel)) rel = (rel + ' noreferrer').trim();
+                a.setAttribute('rel', rel);
+              }
+            }catch(e){/* ignore malformed nodes */}
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', updateLinks);
+        } else {
+          updateLinks();
+        }
+        try{
+          new MutationObserver(function(){ updateLinks(); }).observe(document.body, { childList: true, subtree: true });
+        }catch(e){/* MutationObserver not available */}
+      })();
+    </script>
+    
+  </body>
+</html>
