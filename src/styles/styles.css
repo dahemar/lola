@@ -282,10 +282,12 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
   /* --- Releases grid: 2×2, tighter --- */
   .releases-grid{
+    display: flex; /* Ensure flex is applied on mobile */
     flex-wrap:wrap;
     gap:0.5rem; /* Reduced from 0.75rem */
+    justify-content: space-between;
   }
-  .release-thumb{width:49%} /* Use more width */
+  .release-thumb{width:49%; max-width: 49%;} /* Use more width, ensure max-width to prevent overflow */
 
   /* --- Links / streaming grid: 2 cols, tighter --- */
   .links-grid{
