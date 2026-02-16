@@ -280,14 +280,13 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
     min-height:calc(100vh - 42px);
   }
 
-  /* --- Releases grid: 2×2, tighter --- */
+  /* --- Releases grid: 2×2, iPhone-safe --- */
   .releases-grid{
-    display: flex; /* Ensure flex is applied on mobile */
-    flex-wrap:wrap;
-    gap:0.5rem; /* Reduced from 0.75rem */
-    justify-content: space-between;
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:0.5rem;
   }
-  .release-thumb{width:49%; max-width: 49%;} /* Use more width, ensure max-width to prevent overflow */
+  .release-thumb{width:auto;max-width:none}
 
   /* --- Links / streaming grid: 2 cols, tighter --- */
   .links-grid{
