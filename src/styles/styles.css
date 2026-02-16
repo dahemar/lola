@@ -42,7 +42,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 .sidebar a, .sidebar a:link, .sidebar a:visited { color: var(--color-text); text-decoration: none; padding:0.5rem 0; display:block; font-size:0.95rem; font-weight:700; letter-spacing:0.01em; transition:color 0.18s; }
 .sidebar a:hover { color: var(--color-text); opacity: 1 }
 
-.content{margin-right:calc(var(--sidebar-width) + 16px);padding:1rem 2.5rem;min-height:100vh;position:relative;z-index:1;background:#ffffff;color:#111}
+.content{margin-right:calc(var(--sidebar-width) + 16px);padding:0.5rem 2.5rem;min-height:100vh;position:relative;z-index:1;background:#ffffff;color:#111}
 
 /* Link styles for main content: blue, underlined, with decorative hook arrow */
 .content a, .content a:link, .content a:visited {
