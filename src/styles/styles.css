@@ -46,18 +46,69 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
 /* Link styles for main content: blue, underlined, with decorative hook arrow */
 .content a, .content a:link, .content a:visited {
-  color: #6b6b6b;
+  color: #444; /* Slightly softer than solid black */
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 2.5px;
-  /* Use Inter for consistency across all platforms including iOS */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 400;
-  font-size: 0.94rem;
-  letter-spacing: 0.02em;
+  text-underline-offset: 3px;
+  /* Garamond for elegant, antique feel, deepened spacing */
+  font-family: 'Garamond', 'EB Garamond', 'Cormorant Garamond', 'Times New Roman', serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: -0.015em; /* Relaxed from -0.045em to -0.015em */
+  word-spacing: -0.01em;
+  font-style: normal;
+  position: relative;
+  display: inline-block;
+
+  /* Subtle ink bleed text-shadow */
+  text-shadow:
+    0 0 0.5px rgba(0,0,0,0.25),
+    0.5px 0.3px 0.5px rgba(0,0,0,0.1);
+  -webkit-font-smoothing: antialiased;
+  mix-blend-mode: multiply;
+  opacity: 1;
+  transform: rotate(0.04deg); /* Barely clearer rotation */
 }
+
+/* Speckle texture pseudo-element (very subtle print spread) */
+.content a::after{
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'><circle cx='2.2' cy='1.6' r='0.6' fill='%23000000' opacity='0.08'/></svg>");
+  background-repeat: repeat;
+  background-size:6px 6px;
+  opacity: 0.12; /* Reduced opacity for subtlety */
+  mix-blend-mode: multiply;
+  filter: blur(0.2px) contrast(105%);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* Slightly amplify the speckle on hover for a tactile effect */
+.content a:hover::after{opacity:0.18;filter:blur(0.2px) contrast(110%)}
+
 .content a:hover, .content a:active { color: var(--color-text); font-style: italic }
-.content a::before { content: '⤷'; display: inline-block; margin-right: 0.5rem; color: #000; transform: translateY(-1px); font-size:0.95em }
+
+/* Restore arrow properly: ensured visibility and correct positioning */
+.content a::before { 
+  content: '⤷'; 
+  display: inline-block; 
+  margin-right: 0.5rem; 
+  color: #111; /* Strong black */
+  transform: translateY(1px); /* Slight nudge for alignment with serif font */
+  font-size: 0.9em;
+  font-family: 'Times New Roman', serif; /* Use serif for the arrow too */
+  opacity: 1; /* Reset opacity from parent inheritance if affected */
+  position: relative; /* Keep in flow */
+  z-index: 1; /* Above texture */
+  text-shadow: none; /* Keep arrow cleaner or apply minimal shadow */
+  -webkit-font-smoothing: auto;
+}
 
 /* Keep sidebar styling dark and unaffected */
 .layout--sidebar-right .sidebar{background:rgba(11,11,11,0.9)}
