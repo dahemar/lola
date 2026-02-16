@@ -203,12 +203,12 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   }
   .sidebar a:hover{opacity:0.7}
 
-  /* --- Content area --- */
+  /* --- Content area (reduced top spacing on mobile) --- */
   .content{
     margin-right:0 !important;
-    margin-top:48px;          /* clear the fixed nav bar */
-    padding:1.25rem 1rem !important;
-    min-height:calc(100vh - 48px);
+    margin-top:36px;          /* smaller clearance for the fixed nav bar */
+    padding:1rem 0.9rem !important;
+    min-height:calc(100vh - 36px);
   }
 
   /* --- Releases grid: 2×2 --- */
@@ -225,8 +225,13 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   .videos{gap:0.75rem}
   .video-wrap iframe{border-radius:0}
 
-  /* --- Section titles slightly smaller --- */
-  .content .section-title{font-size:0.95rem;margin:0.75rem 0 0.4rem 0}
+  /* --- Section titles: reduce top margin to make blocks denser --- */
+  .content .section-title{font-size:0.95rem;margin:0.45rem 0 0.28rem 0}
+
+  /* Tighten other common top spacings on mobile */
+  .landing-links{margin-top:0.6rem}
+  .music-list h3{margin:0.6rem 0 0.12rem 0}
+  .hero{min-height:55vh}
 }
 
 /* Hover: make links italic on hover (no modal) */
