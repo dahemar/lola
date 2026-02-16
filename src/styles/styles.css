@@ -329,3 +329,21 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
 /* Hover: make links italic on hover (no modal) */
 .content a:hover, .content a:active { font-style: italic }
+
+/* Final override: ensure desktop sidebar is white with a thin divider -- placed last to win specificity/order */
+@media (min-width:900px){
+  .layout--sidebar-right .sidebar{
+    background: #ffffff !important;
+    background-image: none !important;
+    border-left: 1px solid rgba(0,0,0,0.08) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    color: #111 !important;
+  }
+  .layout--sidebar-right .sidebar::before,
+  .layout--sidebar-right .sidebar::after{
+    display: none !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+}
