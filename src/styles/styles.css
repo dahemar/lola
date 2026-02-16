@@ -112,10 +112,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   text-transform:none;
 }
 .content .section-title::after{
-  content: '⤵';
-  color:#000;
-  font-size:1.15rem;
-  transform: translateY(2px) translateX(2px);
+  content: none;
 }
 
 .hero{display:flex;align-items:center;justify-content:center;min-height:70vh}
