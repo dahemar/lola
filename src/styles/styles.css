@@ -67,13 +67,37 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 .content .card-body .muted{color:#6b6b6b}
 .content .card-body .visit{color:#0b63ce;text-decoration:underline}
 
-/* Instagram follow widget */
-.insta-widget{margin-top:0.5rem}
-.insta-card{display:flex;align-items:center;gap:0.75rem;padding:0.6rem;border-radius:6px;background:#fafafa;color:#111;text-decoration:none}
-.insta-card svg{flex:0 0 36px;border-radius:4px}
-.insta-text strong{display:block;font-size:0.98rem}
-.insta-text .muted{font-size:0.85rem;color:#6b6b6b}
-.insta-card:hover{opacity:0.95}
+/* Instagram profile preview widget */
+.insta-widget{margin-top:0.5rem;max-width:400px}
+.insta-profile-link{text-decoration:none !important}
+.insta-profile-link::before{display:none !important}
+.insta-preview{
+  border:1px solid #dbdbdb;
+  border-radius:8px;
+  padding:1.25rem;
+  background:#fff;
+  transition:box-shadow 0.2s ease;
+}
+.insta-preview:hover{box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+.insta-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.insta-avatar{flex:0 0 56px}
+.insta-info{flex:1}
+.insta-username{display:block;font-size:1.05rem;color:#111;margin-bottom:0.25rem}
+.insta-stats{font-size:0.85rem;color:#6b6b6b}
+.insta-cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  padding:0.6rem 1rem;
+  background:#0095f6;
+  color:#fff;
+  border-radius:6px;
+  font-size:0.9rem;
+  font-weight:600;
+  transition:background 0.2s ease;
+}
+.insta-preview:hover .insta-cta{background:#0084d9}
 
 /* Section title with decorative right-pointing arrow */
 .content .section-title{
