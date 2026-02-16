@@ -219,6 +219,8 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
     border-left:0.5px solid rgba(0,0,0,0.06);
     box-shadow: -1px 0 0 rgba(0,0,0,0.03);
   }
+  .layout--sidebar-right .sidebar::before,
+  .layout--sidebar-right .sidebar::after{display:none}
   .layout--sidebar-right .sidebar a, .layout--sidebar-right .sidebar a:link, .layout--sidebar-right .sidebar a:visited{
     color:#111; /* dark links on white background */
   }
