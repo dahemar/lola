@@ -228,7 +228,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
     background:#ffffff; /* white menu background on desktop */
     color:#111;
     /* Use a hairline border where supported and a faint shadow for smoother rendering */
-    border-left:1px solid rgba(0,0,0,0.15) !important;
+    border-left:12px solid rgba(0,0,0,0.95) !important;
     box-shadow: none !important;
   }
   .layout--sidebar-right .sidebar::before,
@@ -347,7 +347,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   .layout--sidebar-right .sidebar{
     background: #ffffff !important;
     background-image: none !important;
-    border-left: 1px solid rgba(0,0,0,0.08) !important;
+    border-left: 12px solid rgba(0,0,0,0.95) !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
     color: #111 !important;
