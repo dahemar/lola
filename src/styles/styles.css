@@ -228,7 +228,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
     background:#ffffff; /* white menu background on desktop */
     color:#111;
     /* Use a hairline border where supported and a faint shadow for smoother rendering */
-    border-left: 2px solid #2b2b2b !important;
+    border-left: 2px solid #474747 !important;
     box-shadow: none !important;
   }
   .layout--sidebar-right .sidebar::before,
@@ -259,7 +259,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
   /* Reduce the top spacing of the main content on desktop by 3px (visual nudge) */
   .content {
-    padding-top: calc(2rem - 3px);
+    padding-top: calc(2rem - 3px) !important;
   }
 }
 
@@ -353,11 +353,13 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
     background: #ffffff !important;
     background-image: none !important;
     /* Slightly heavier than before but still subtle */
-    border-left: 2px solid #2b2b2b !important;
+    border-left: 2px solid #474747 !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
     color: #111 !important;
   }
+  /* Ensure desktop padding-top reduction wins specificity */
+  .content{ padding-top: calc(2rem - 3px) !important; }
   .layout--sidebar-right .sidebar::before,
   .layout--sidebar-right .sidebar::after{
     display: none !important;
