@@ -99,21 +99,35 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 }
 .insta-preview:hover .insta-cta{background:#0084d9}
 
-/* Section title with decorative right-pointing arrow */
-.content .section-title{
-  font-family:var(--font-display);
-  font-weight:800;
-  font-size:1rem;
-  margin:1rem 0 0.25rem 0;
-  color:#111;
-  display:inline-flex;
-  align-items:center;
-  gap:0.5rem;
-  text-transform:none;
+/* Section title with decorative black box and separator */
+.content .section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin: 1.5rem 0 0.5rem 0;
+  color: #fff;
+  background-color: #000;
+  display: inline-block;
+  padding: 0.3em 0.6em;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  /* Ensure no residual styles */
+  border: none;
 }
-.content .section-title::after{
+.content .section-title::after {
   content: none;
 }
+
+/* Add double line separator below titles */
+.content .section-title + * {
+  border-top: 3px double #000;
+  padding-top: 1rem;
+  margin-top: 0.25rem;
+  display: block; /* Ensure block formatting context */
+  width: 100%;
+}
+
 
 .hero{display:flex;align-items:center;justify-content:center;min-height:70vh}
 .hero-inner{text-align:center}
