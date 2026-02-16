@@ -67,6 +67,14 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 .content .card-body .muted{color:#6b6b6b}
 .content .card-body .visit{color:#0b63ce;text-decoration:underline}
 
+/* Instagram follow widget */
+.insta-widget{margin-top:0.5rem}
+.insta-card{display:flex;align-items:center;gap:0.75rem;padding:0.6rem;border-radius:6px;background:#fafafa;color:#111;text-decoration:none}
+.insta-card svg{flex:0 0 36px;border-radius:4px}
+.insta-text strong{display:block;font-size:0.98rem}
+.insta-text .muted{font-size:0.85rem;color:#6b6b6b}
+.insta-card:hover{opacity:0.95}
+
 /* Section title with decorative right-pointing arrow */
 .content .section-title{
   font-family:var(--font-display);
