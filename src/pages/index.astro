@@ -7,36 +7,38 @@ import broadcasts from '../lib/broadcasts.js'
 <Base>
   <Nav slot="nav" />
 
-  <article class="content">
+  <article>
     
     <section class="music-list">
       
-      <div id="broadcasts">
-        <h3 class="section-title">broadcasts</h3>
-        <ul>
-          {broadcasts.map((b) => (
-            <li>
-              <a href={b.url} target="_blank" rel="noopener">{b.label || b.url}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <div class="top-columns-wrapper">
+        <div id="broadcasts">
+          <h3 class="section-title">broadcasts</h3>
+          <ul>
+            {broadcasts.map((b) => (
+              <li>
+                <a href={b.url} target="_blank" rel="noopener">{b.label || b.url}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      <div id="playlists">
-        <h3 class="section-title">playlists</h3>
-        <ul>
-          <li><a href="https://open.spotify.com/playlist/3gyUmQhxmlYHe9UTySm4vU" target="_blank" rel="noopener">the numero group playlist</a></li>
-          <li><a href="https://open.spotify.com/playlist/6hwSVA1YrZo2updK18Oh3I" target="_blank" rel="noopener">public possession, ppool</a></li>
-        </ul>
-      </div>
+        <div id="playlists">
+          <h3 class="section-title">playlists</h3>
+          <ul>
+            <li><a href="https://open.spotify.com/playlist/3gyUmQhxmlYHe9UTySm4vU" target="_blank" rel="noopener">the numero group playlist</a></li>
+            <li><a href="https://open.spotify.com/playlist/6hwSVA1YrZo2updK18Oh3I" target="_blank" rel="noopener">public possession, ppool</a></li>
+          </ul>
+        </div>
 
-      <div id="press">
-        <h3 class="section-title">press</h3>
-        <ul>
-          <li><a href="https://www.destroyexist.com/2025/12/lola-moon-song-live.html" target="_blank" rel="noopener">destroy/exist: moon song (live)</a></li>
-          <li><a href="https://www.americanpancake.com/2025/12/lola-and-beautifully-raw-textured.html" target="_blank" rel="noopener">american pancake</a></li>
-          <li><a href="https://www.analoguetrash.com/blog/lola-moon-song-live" target="_blank" rel="noopener">analogue trash</a></li>
-        </ul>
+        <div id="press">
+          <h3 class="section-title">press</h3>
+          <ul>
+            <li><a href="https://www.destroyexist.com/2025/12/lola-moon-song-live.html" target="_blank" rel="noopener">destroy/exist: moon song (live)</a></li>
+            <li><a href="https://www.americanpancake.com/2025/12/lola-and-beautifully-raw-textured.html" target="_blank" rel="noopener">american pancake</a></li>
+            <li><a href="https://www.analoguetrash.com/blog/lola-moon-song-live" target="_blank" rel="noopener">analogue trash</a></li>
+          </ul>
+        </div>
       </div>
 
       <div id="releases">

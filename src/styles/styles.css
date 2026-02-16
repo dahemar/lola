@@ -42,7 +42,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 .sidebar a, .sidebar a:link, .sidebar a:visited { color: var(--color-text); text-decoration: none; padding:0.5rem 0; display:block; font-size:0.95rem; font-weight:700; letter-spacing:0.01em; transition:color 0.18s; }
 .sidebar a:hover { color: var(--color-text); opacity: 1 }
 
-.content{margin-right:calc(var(--sidebar-width) + 16px);padding:0.5rem 2.5rem;min-height:100vh;position:relative;z-index:1;background:#ffffff;color:#111}
+.content{margin-right:calc(var(--sidebar-width) + 16px);padding:2rem 1.5rem 2rem 2.5rem;min-height:100vh;position:relative;z-index:1;background:#ffffff;color:#111}
 
 /* Link styles for main content: blue, underlined, with decorative hook arrow */
 .content a, .content a:link, .content a:visited {
@@ -155,7 +155,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   font-family:var(--font-display);
   font-weight:800;
   font-size:1rem;
-  margin:1rem 0 0.25rem 0;
+  margin:0.65rem 0 0.25rem 0; /* Align with sidebar (was 1rem) */
   color:#111;
   display:inline-flex;
   align-items:center;
@@ -212,6 +212,24 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
 @media(min-width:900px){
   .videos{grid-template-columns:1fr}
+  .top-columns-wrapper {
+    display: grid;
+    /* Compact, column layout that respects the "edge" but fills space */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.25rem; /* Tighter gap for visual density */
+    align-items: start;
+    margin-right: -1rem; /* Pull slightly closer to sidebar visually */
+    /* Ensure internal headers sit flush with the sidebar links */
+    align-content: start;
+  }
+
+  /* Align section headers with sidebar items (desktop only) */
+  /* Sidebar 'music' link has 0.5rem top padding, starting effectively at 2.5rem from top (2rem container padding + 0.5rem link padding) */
+  /* Main content starts at 2rem padding. We need to push the header down 0.5rem to align visually. */
+  .top-columns-wrapper .section-title{
+    margin-top: 0.65rem; /* ~0.5rem + slight nudge for optical alignment */
+    transform: none; /* remove previous transform hack */
+  }
 }
 
 /* ===== MOBILE ===== */
@@ -254,35 +272,44 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   }
   .sidebar a:hover{opacity:0.7}
 
-  /* --- Content area (reduced top spacing on mobile) --- */
+  /* --- Content area (restored top spacing for consistency) --- */
   .content{
     margin-right:0 !important;
-    margin-top:36px;          /* smaller clearance for the fixed nav bar */
-    padding:1rem 0.9rem !important;
-    min-height:calc(100vh - 36px);
+    margin-top:42px;          /* Standard clearance for nav bar */
+    padding:2rem 1rem 2rem 1rem !important; /* Side padding: 1rem (was 0.6rem) to match 'live' feel */
+    min-height:calc(100vh - 42px);
   }
 
-  /* --- Releases grid: 2×2 --- */
+  /* --- Releases grid: 2×2, tighter --- */
   .releases-grid{
     flex-wrap:wrap;
-    gap:0.75rem;
+    gap:0.5rem; /* Reduced from 0.75rem */
   }
-  .release-thumb{width:46%}
+  .release-thumb{width:49%} /* Use more width */
 
-  /* --- Links / streaming grid: 2 cols --- */
-  .links-grid{grid-template-columns:repeat(2,1fr)}
+  /* --- Links / streaming grid: 2 cols, tighter --- */
+  .links-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:0.5rem;
+  }
 
-  /* --- Videos full-width --- */
-  .videos{gap:0.75rem}
+  /* --- Videos full-width, tighter --- */
+  .videos{gap:0.5rem}
   .video-wrap iframe{border-radius:0}
 
-  /* --- Section titles: reduce top margin to make blocks denser --- */
-  .content .section-title{font-size:0.95rem;margin:0.45rem 0 0.28rem 0}
+  /* --- Section titles: ultra-compact --- */
+  .content .section-title{font-size:0.95rem;margin:0.5rem 0 0.2rem 0}
+
+  /* Tighten spacing between stacked columns */
+  .top-columns-wrapper > div {
+    margin-bottom: 0.85rem;
+  }
+  .top-columns-wrapper > div:last-child { margin-bottom: 0; }
 
   /* Tighten other common top spacings on mobile */
-  .landing-links{margin-top:0.6rem}
-  .music-list h3{margin:0.6rem 0 0.12rem 0}
-  .hero{min-height:55vh}
+  .landing-links{margin-top:0.5rem}
+  .music-list h3{margin:0.5rem 0 0.1rem 0}
+  .hero{min-height:50vh}
 }
 
 /* Hover: make links italic on hover (no modal) */
