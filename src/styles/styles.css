@@ -42,7 +42,19 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 .sidebar a, .sidebar a:link, .sidebar a:visited { color: var(--color-text); text-decoration: none; padding:0.5rem 0; display:block; font-size:0.95rem; font-weight:700; letter-spacing:0.01em; transition:color 0.18s; }
 .sidebar a:hover { color: var(--color-text); opacity: 1 }
 
-.content{margin-right:calc(var(--sidebar-width) + 16px);padding:2rem 1.5rem 2rem 2.5rem;min-height:100vh;position:relative;z-index:1;background:#ffffff;color:#111}
+.content{
+  /* Make content full-width and extend its white background under the fixed sidebar
+     by using padding-right rather than margin-right. This prevents the body bg
+     from showing as a thick dark strip between content and the sidebar. */
+  margin-right:0;
+  padding:2rem 1.5rem 2rem 2.5rem;
+  padding-right: calc(var(--sidebar-width) + 16px);
+  min-height:100vh;
+  position:relative;
+  z-index:1;
+  background:#ffffff;
+  color:#111;
+}
 
 /* Link styles for main content: blue, underlined, with decorative hook arrow */
 .content a, .content a:link, .content a:visited {
