@@ -107,20 +107,8 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
 .content a:hover, .content a:active { color: var(--color-text); font-style: italic }
 
-/* Restore arrow properly: ensured visibility and correct positioning */
-.content a::before { 
-  content: '⤷'; 
-  display: inline-block; 
-  margin-right: 0.5rem; 
-  color: #111; /* Strong black */
-  transform: translateY(1px); /* Slight nudge for alignment with serif font */
-  font-size: 0.9em;
-  font-family: 'Times New Roman', serif; /* Use serif for the arrow too */
-  opacity: 1; /* Reset opacity from parent inheritance if affected */
-  position: relative; /* Keep in flow */
-  z-index: 1; /* Above texture */
-  text-shadow: none; /* Keep arrow cleaner or apply minimal shadow */
-  -webkit-font-smoothing: auto;
+.content a::before {
+  display: none;
 }
 
 /* Keep sidebar styling dark and unaffected */
