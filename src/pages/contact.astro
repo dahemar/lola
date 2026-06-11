@@ -1,15 +1,20 @@
 ---
 import Base from '../layouts/Base.astro'
 import Nav from '../components/Nav.astro'
+import { getSiteData } from '../lib/cms/getSite'
+
+const site = await getSiteData(Astro.locals)
 ---
-<Base>
+<Base title={site.siteMeta.name}>
   <Nav slot="nav" />
   <article>
     <header>
       <h3 class="section-title">contact</h3>
     </header>
     <section>
-      <p><a href="mailto:lola_______@outlook.com">lola_______@outlook.com</a></p>
+      {site.contactEmails.map((email) => (
+        <p><a href={`mailto:${email}`}>{email}</a></p>
+      ))}
     </section>
   </article>
 </Base>

@@ -22,6 +22,7 @@
   --breakpoint-mobile: 768px;
   --radius: 8px;
   --transition: all 0.18s ease;
+  --hairline: rgba(0,0,0,0.07);
 }
 
 *{box-sizing:border-box}
@@ -34,7 +35,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
 .layout--sidebar-right .sidebar{position:fixed;right:0;top:0;height:100vh;width:var(--sidebar-width);background:rgba(11,11,11,0.9);padding:2rem;border-left:0;backdrop-filter:blur(6px);position:fixed;z-index:20;overflow:hidden}
 .layout--sidebar-right .sidebar::before{content:'';position:absolute;left:-20px;top:0;bottom:0;width:20px;pointer-events:none;z-index:22;background:linear-gradient(to right,#dcdcdc 0 6px,#efefef 6px 12px,transparent 12px);}
-.layout--sidebar-right .sidebar::after{content:'';position:absolute;left:-4px;top:0;bottom:0;width:4px;pointer-events:none;z-index:23;background:linear-gradient(to right,rgba(0,0,0,0.28),rgba(0,0,0,0.08));box-shadow: -4px 0 8px rgba(0,0,0,0.08);}
+.layout--sidebar-right .sidebar::after{content:'';position:absolute;left:-4px;top:0;bottom:0;width:4px;pointer-events:none;z-index:23;background:linear-gradient(to right,rgba(0,0,0,0.28),rgba(0,0,0,0.08));box-shadow:-4px 0 8px rgba(0,0,0,0.08);}
 .sidebar .sidebar-inner{display:flex;flex-direction:column;gap:1.5rem}
 .sidebar .logo-placeholder{margin-bottom:0.5rem}
 .sidebar ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.5rem;padding-left:0}
@@ -47,8 +48,8 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
      by using padding-right rather than margin-right. This prevents the body bg
      from showing as a thick dark strip between content and the sidebar. */
   margin-right:0;
-  padding:2rem 1.5rem 2rem 2.5rem;
-  padding-right: calc(var(--sidebar-width) + 16px);
+  padding:3.5rem 2.5rem 5rem 3.75rem;
+  padding-right: calc(var(--sidebar-width) + 3rem);
   min-height:100vh;
   position:relative;
   z-index:1;
@@ -167,7 +168,7 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   font-family:var(--font-display);
   font-weight:800;
   font-size:1rem;
-  margin:0.65rem 0 0.25rem 0; /* Align with sidebar (was 1rem) */
+  margin:0 0 0.9rem 0;
   color:#111;
   display:inline-flex;
   align-items:center;
@@ -195,24 +196,60 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 
 .blog-container{max-width:900px;margin:0 auto}
 .music-list ul,.shows-list ul{padding-left:0;list-style:none;margin-top:0}
-.music-list li{padding:0.12rem 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.music-list li{padding:0.34rem 0;border-bottom:none}
 .shows-list li{padding:0.08rem 0;border-bottom:1px solid rgba(255,255,255,0.03);line-height:1.15}
-.music-list h3{margin:1rem 0 0.2rem 0}
-.links-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;padding:0}
+.music-list h3{margin:0}
+.music-section{margin-top:4.25rem}
+.music-section:first-of-type{margin-top:0}
+.page-hero{margin:0 0 1.25rem 0;max-width:100%}
+.page-hero img{display:block;width:100%;max-width:520px;height:auto;object-fit:cover;border:1px solid var(--hairline);filter:saturate(0.96) contrast(1.02)}
+
+/* Streaming links — icon + label, no serif/arrow decoration */
+.streaming-grid{display:flex;flex-wrap:wrap;gap:1.1rem 2.75rem;padding:0.95rem 0 0;list-style:none;margin:0}
+.streaming-grid li{padding:0;border-bottom:none}
+.content a.streaming-link{
+  display:inline-flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap;
+  align-items:center;
+  gap:0.55rem;
+  color:#111;
+  text-decoration:none !important;
+  font-family:var(--font-sans) !important;
+  font-style:normal !important;
+  font-weight:400 !important;
+  font-size:0.9rem !important;
+  letter-spacing:0 !important;
+  word-spacing:normal !important;
+  text-shadow:none !important;
+  mix-blend-mode:normal !important;
+  transform:none !important;
+  opacity:1;
+  padding:0.35rem 0;
+  transition:opacity 0.18s ease, transform 0.18s ease;
+}
+.streaming-link::before,
+.streaming-link::after{display:none !important}
+.streaming-link:hover,
+.streaming-link:active{color:#111;font-style:normal !important;opacity:0.55;transform:translateY(-1px) !important}
+.streaming-icon{flex:0 0 auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;line-height:0}
+.streaming-icon svg{display:block}
+.streaming-label{flex:0 1 auto;line-height:1.2;color:#333;white-space:nowrap}
 
 /* Releases thumbnails grid */
-.releases-grid{display:flex;gap:1rem;justify-content:space-between;align-items:flex-start;margin-top:0.5rem}
-.release-thumb{display:flex;flex-direction:column;align-items:stretch;text-decoration:none;color:inherit;width:22%;cursor:default}
-.release-thumb img{width:100%;height:auto;display:block;object-fit:cover;aspect-ratio:1/1;border-radius:0;border:0;box-shadow:none}
-.release-thumb .thumb-label{display:block;margin-top:0.5rem;font-size:0.9rem;color:#333;text-align:center;line-height:1.25;height:2.5em;overflow:hidden;opacity:0;transform:translateY(6px);transition:opacity .12s ease,transform .12s ease}
-.release-thumb:hover .thumb-label{opacity:1;transform:translateY(0)}
+.releases-grid{display:flex;gap:2rem;justify-content:space-between;align-items:flex-start;margin-top:1.05rem}
+.release-thumb{display:flex;flex-direction:column;align-items:stretch;text-decoration:none;color:inherit;width:21%;cursor:default}
+.release-thumb img{width:100%;height:auto;display:block;object-fit:cover;aspect-ratio:1/1;border-radius:0;border:1px solid var(--hairline);box-shadow:none;filter:saturate(0.96) contrast(1.02);transition:filter .18s ease, opacity .18s ease}
+.release-thumb:hover img{filter:saturate(1) contrast(1.04);opacity:0.96}
+.release-thumb .thumb-label{display:block;margin-top:0.7rem;font-size:0.85rem;color:#666;text-align:center;line-height:1.35;height:2.7em;overflow:hidden;opacity:1;transform:none;transition:color .12s ease}
+.release-thumb:hover .thumb-label{color:#333}
 .release-thumb:focus{outline:none}
 
 
-.videos{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
+.videos{display:grid;grid-template-columns:1fr;gap:2.25rem;margin-top:1.1rem}
 .video-wrap{background:transparent;padding:0}
 .video-wrap h4{margin:0 0 0.5rem 0;font-size:0.95rem;color:var(--color-muted)}
-.video-wrap iframe{width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:0;display:block}
+.video-wrap iframe{width:100%;aspect-ratio:16/9;height:auto;border:1px solid var(--hairline);border-radius:0;display:block}
 
 .previews{display:grid;grid-template-columns:1fr;gap:0.75rem;margin-bottom:1rem}
 .link-card{display:flex;background:var(--color-card);border:1px solid var(--color-border);padding:1rem;border-radius:12px;align-items:center;gap:1.25rem;transition:transform 0.2s ease, border-color 0.2s ease;overflow:hidden}
@@ -225,14 +262,11 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
 @media(min-width:900px){
   /* Desktop sidebar: white background with black divider */
   .layout--sidebar-right .sidebar{
-    background:#ffffff; /* white menu background on desktop */
+    background:#ffffff;
     color:#111;
-    /* Use a hairline border where supported and a faint shadow for smoother rendering */
-    border-left: 2px solid #6b6b6b !important;
+    border-left:2px solid #000 !important;
     box-shadow: none !important;
   }
-  .layout--sidebar-right .sidebar::before,
-  .layout--sidebar-right .sidebar::after{display:none !important}
   .layout--sidebar-right .sidebar a, .layout--sidebar-right .sidebar a:link, .layout--sidebar-right .sidebar a:visited{
     color:#111; /* dark links on white background */
   }
@@ -240,27 +274,14 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   .videos{grid-template-columns:1fr}
   .top-columns-wrapper {
     display: grid;
-    /* Compact, column layout that respects the "edge" but fills space */
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-    gap: 1.25rem; /* Tighter gap for visual density */
+    gap: 3.5rem;
     align-items: start;
-    margin-right: -1rem; /* Pull slightly closer to sidebar visually */
-    /* Ensure internal headers sit flush with the sidebar links */
     align-content: start;
+    margin-top: 4.75rem;
   }
 
-  /* Align section headers with sidebar items (desktop only) */
-  /* Sidebar 'music' link has 0.5rem top padding, starting effectively at 2.5rem from top (2rem container padding + 0.5rem link padding) */
-  /* Main content starts at 2rem padding. We need to push the header down 0.5rem to align visually. */
-  .top-columns-wrapper .section-title{
-    margin-top: 0.65rem; /* ~0.5rem + slight nudge for optical alignment */
-    transform: none; /* remove previous transform hack */
-  }
-
-  /* Reduce the top spacing of the main content on desktop by 3px (visual nudge) */
-  .content {
-    padding-top: calc(2rem - 3px) !important;
-  }
+  .page-hero img{max-width:480px}
 }
 
 /* ===== MOBILE ===== */
@@ -270,9 +291,12 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
     position:fixed;top:0;left:0;right:0;bottom:auto;
     width:100%;height:auto;
     padding:0;
-    background:#0a0a0a;
-    border-left:0;border-bottom:none;
-    backdrop-filter:none;
+    background:rgba(8,8,8,0.76);
+    border-left:0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(14px) saturate(120%);
+    -webkit-backdrop-filter:blur(14px) saturate(120%);
+    box-shadow:0 1px 18px rgba(0,0,0,0.08);
     z-index:100;
     transform:translateZ(0);
     -webkit-transform:translateZ(0);
@@ -303,44 +327,47 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   }
   .sidebar a:hover{opacity:0.7}
 
-  /* --- Content area (restored top spacing for consistency) --- */
+  /* --- Content area --- */
   .content{
     margin-right:0 !important;
-    margin-top:42px;          /* Standard clearance for nav bar (restored) */
-    padding:2rem 1rem 2rem 1rem !important; /* Side padding: 1rem (was 0.6rem) to match 'live' feel */
+    margin-top:42px;
+    padding:2.75rem 1.35rem 3.5rem 1.35rem !important;
     min-height:calc(100vh - 42px);
   }
 
-  /* --- Releases grid: 2×2, iPhone-safe --- */
+  /* --- Vertical rhythm: more air between sections --- */
+  .music-section{margin-top:3.35rem}
+  .page-hero{margin-bottom:0.6rem}
+  .page-hero img{max-width:100%}
+
+  /* --- Releases grid: 2×2 --- */
   .releases-grid{
     display:grid;
     grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:0.5rem;
+    gap:1rem 1.05rem;
+    margin-top:1rem;
   }
   .release-thumb{width:auto;max-width:none}
 
-  /* --- Links / streaming grid: 2 cols, tighter --- */
-  .links-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:0.5rem;
-  }
+  /* --- Streaming links --- */
+  .streaming-grid{gap:1rem 2rem;padding-top:0.85rem}
+  .content a.streaming-link{font-size:0.875rem !important;flex-direction:row !important;gap:0.5rem}
 
-  /* --- Videos full-width, tighter --- */
-  .videos{gap:0.5rem}
+  /* --- Videos --- */
+  .videos{gap:2rem;margin-top:1.1rem}
   .video-wrap iframe{border-radius:0}
 
-  /* --- Section titles: ultra-compact --- */
-  .content .section-title{font-size:0.95rem;margin:0.5rem 0 0.2rem 0}
+  /* --- Section titles --- */
+  .content .section-title{font-size:0.95rem;margin:0 0 0.65rem 0}
 
-  /* Tighten spacing between stacked columns */
+  /* Space between stacked columns */
   .top-columns-wrapper > div {
-    margin-bottom: 0.85rem;
+    margin-bottom: 2.35rem;
   }
   .top-columns-wrapper > div:last-child { margin-bottom: 0; }
 
-  /* Tighten other common top spacings on mobile */
-  .landing-links{margin-top:0.5rem}
-  .music-list h3{margin:0.5rem 0 0.1rem 0}
+  .music-list li{padding:0.28rem 0}
+  .landing-links{margin-top:0.75rem}
   .hero{min-height:50vh}
 }
 
@@ -352,18 +379,9 @@ a:hover, a:active { color: var(--color-text); opacity: 0.95 }
   .layout--sidebar-right .sidebar{
     background: #ffffff !important;
     background-image: none !important;
-    /* Slightly heavier than before but still subtle */
-      border-left: 2px solid #6b6b6b !important;
+    border-left: 2px solid #000 !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
     color: #111 !important;
-  }
-  /* Ensure desktop padding-top reduction wins specificity */
-  .content{ padding-top: calc(2rem - 3px) !important; }
-  .layout--sidebar-right .sidebar::before,
-  .layout--sidebar-right .sidebar::after{
-    display: none !important;
-    background: none !important;
-    box-shadow: none !important;
   }
 }
